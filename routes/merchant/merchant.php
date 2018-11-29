@@ -8,7 +8,6 @@
 
 
 Route::group(['prefix'=>'/','middleware'=>['merchant.groupauth']],function(){
-
     Route::group(['prefix'=>'/merchant'],function () {
         Route::get('/', ["uses" => 'Merchant\\MerchantController@merchantLogin']);
         Route::get('/logout', ["uses" => 'Merchant\\MerchantController@merchantLogout', "as" => "merchant.logout"]);
