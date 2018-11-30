@@ -82,6 +82,7 @@ class Timer extends Command{
     // 关闭连时回调函数
     public function onClose(\swoole_server $server, $fd, $from_id)
     {
+        $server->close();
         echo "Close" . PHP_EOL;
     }
 }
