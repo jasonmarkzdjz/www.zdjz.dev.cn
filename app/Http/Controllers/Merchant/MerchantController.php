@@ -12,6 +12,9 @@ use App\Bls\Merchant\Model\PersonauthModel;
 use App\Bls\Merchant\Model\CompanyauthModel;
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\工厂方法\HuaweiFactoryController;
+use App\Http\Controllers\工厂方法\XiaoMiFactoryController;
+use App\Http\Controllers\工厂模式\FactoryController;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -37,6 +40,13 @@ class MerchantController extends Controller {
      * @date 2018/05/20
      * */
     public function merchantLogin() {
-     echo "欢迎您。".rand(1000,9999);exit; 
+     echo "欢迎您。".rand(1000,9999);exit;
+
+      //静态工厂模式
+        $person = FactoryController::createFactory('person');
+        $jinling = FactoryController::createFactory('jinling');
+        //工厂方法
+        $xiaomi = XiaoMiFactoryController::createPhpne();
+        $huawei = HuaweiFactoryController::createPhpne();
      }
 }
