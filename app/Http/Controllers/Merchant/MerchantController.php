@@ -12,9 +12,14 @@ use App\Bls\Merchant\Model\PersonauthModel;
 use App\Bls\Merchant\Model\CompanyauthModel;
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\Controller;
+use app\Http\Controllers\Factory\适配器模式\AdaptorController;
 use App\Http\Controllers\工厂方法\HuaweiFactoryController;
 use App\Http\Controllers\工厂方法\XiaoMiFactoryController;
 use App\Http\Controllers\工厂模式\FactoryController;
+use App\Http\Controllers\策略模式\GirlFrendController;
+use App\Http\Controllers\策略模式\KeAiController;
+use app\Http\Controllers\适配器模式\WifeController;
+use App\Http\Controllers\门面模式\FacdeController;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -48,5 +53,18 @@ class MerchantController extends Controller {
         //工厂方法
         $xiaomi = XiaoMiFactoryController::createPhpne();
         $huawei = HuaweiFactoryController::createPhpne();
+
+        //门面模式
+        $facde = new FacdeController();
+        $facde->start();
+        //适配器模式
+        $wife = new WifeController();
+        $adaptor = new AdaptorController($wife);
+        $adaptor->cook();
+        $adaptor->writePhp();
+        //策略模式
+        $keai = new KeAiController();
+        $girlfrend = new GirlFrendController($keai);
+        $girlfrend->sajiao();
      }
 }
