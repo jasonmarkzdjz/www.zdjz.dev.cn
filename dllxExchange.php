@@ -1,11 +1,16 @@
 <?php
-
+/**
+ * Created by PhpStorm.
+ * User: Jason
+ * Date: 2019/8/22
+ * Time: 15:00
+ */
 
 //direct 交换器类型
-$ex_name = 'ttl.ex.water.direct';
-$quene_name = 'ttl.quene.water.direct';
-$route_key = 'ttl.xian.water.direct';
-$bind_key = 'ttl.xian.water.direct';
+$ex_name = 'dlx.ex.water.directe';
+$quene_name = 'dlx.quene.water.direct';
+$route_key = 'dlx.water.direct';
+$bind_key = 'dlx.water.direct';
 $connect = new \AMQPConnection(array('host'=>'127.0.0.1','port'=>'5672','vhost'=>'/zdjz','login'=>'guest','password'=>'guest'));
 if(!$connect->connect()){
     echo "mq连接失败";
@@ -24,14 +29,6 @@ $quene = new \AMQPQueue($chann);
 $quene->setName($quene_name);
 $quene->setFlags(AMQP_AUTODELETE);//是否自动删除  当前队列上没有订阅的消费者时 自动删除
 $quene->setFlags(AMQP_DURABLE);//是否持久化
-//设置死信队列  消息过期 消息被拒绝 队列长度限制
-$quene->setArgument('x-expires',30000);//过期时间
-$quene->setArgument('x-dead-letter-exchange','dlx.ex.water.directe');//通知死信交换器
-$quene->setArgument('x-dead-letter-routing-key','dlx.water.direct');//指定routkey
 $quene->declareQueue();
 $quene->bind($ex_name,$bind_key);
 $ex->publish(json_encode(array('code'=>1,'message'=>'西安欢迎你!'.rand(99,99999))),$route_key);
-
-
-
-?>
