@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //krpano 场景切图命令
-        'App\Console\Commands\SceneCube',
+//        'App\Console\Commands\SceneCube',
+        'App\Console\Commands\MqBasicGet',
     ];
 
     /**
@@ -26,8 +27,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // 定义执行计划
-        $schedule->command('SceneCube')
-                 ->everyMinute();
+//        $schedule->command('SceneCube')
+//                 ->everyMinute();
+        $schedule->command('MqBasicGet')
+            ->everyMinute();
     }
 
     /**
