@@ -20,21 +20,6 @@ class Controller extends BaseController{
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     protected $pageSize = 20;
     protected $client;
-//    public function __construct() {
-//        view()->share('base_url', config("app.url"));
-//        view()->share('assets_url', config("app.url"));
-//        view()->share('navdata',$this->getNav());
-//        view()->share('trademall',$this->getConfigMall());
-//        $this->client = HttpClient::getInstance();
-//    }
-//    public function getToken(){
-//        $result = $this->client->post('merchant/login',['form_params'=>['mobile'=>Auth::user()->mobile,'password'=>Auth::user()->cipher]]);
-//        $result = json_decode($result->getBody(),true);
-//        if($result['code'] == 200){
-//            Cache::store('redis')->set(CacheConst::MERCHANT_API_TOKEN_LOGIN.Auth::user()->mobile,$result['data']['token'],3600);
-//        }
-//         return Cache::store('redis')->get(CacheConst::MERCHANT_API_TOKEN_LOGIN.Auth::user()->mobile);
-//    }
     protected function retJson($data = []) {
         return JsonResponse::success($data);
     }

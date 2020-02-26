@@ -45,6 +45,7 @@ class MerchantController extends Controller {
      * @date 2018/05/20
      * */
     public function merchantLogin() {
+        TMFile::getInstance();
 //     echo "欢迎您。".rand(1000,9999);exit;
 //
 //      //静态工厂模式

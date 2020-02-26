@@ -12,3 +12,4 @@
 */
 
 require "merchant/merchant.php";
+require "rabbitmq/mq.php";

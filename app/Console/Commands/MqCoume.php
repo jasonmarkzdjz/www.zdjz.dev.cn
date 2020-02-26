@@ -44,7 +44,7 @@ class MqCoume extends Command
      */
     public function handle()
     {
-        $connection = new AMQPStreamConnection('localhost', 5672, 'bitch', 'bitch');
+        $connection = new AMQPStreamConnection('192.168.75.172', 5672, 'bitch', 'bitch');
         $channel = $connection->channel();
         $channel->queue_declare('hello', false, true);
 
