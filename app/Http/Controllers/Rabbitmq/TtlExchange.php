@@ -10,7 +10,7 @@ $conmmentExchangeName = 'conmment.exchange.news';
 $conmmentQueneName = 'conmment.queue.news';
 
 $connmentBind_key = 'comment.queue.new';
-
+//port 监听客户端的端口号
 $connect = new \AMQPConnection(array('host'=>'192.168.75.178','port'=>'5672','vhost'=>'/','login'=>'guest','password'=>'guest'));
 if(!$connect->connect()){
     echo "mq连接失败";
